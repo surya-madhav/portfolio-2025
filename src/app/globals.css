@@ -19,3 +19,44 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Background Image System */
+.bg-responsive {
+  @apply relative min-h-screen;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Mobile First Approach */
+.bg-responsive {
+  background-image: url('/backgrounds/mobile.png');
+}
+
+/* Tablet (640px and up) */
+@media (min-width: 640px) {
+  .bg-responsive {
+    background-image: url('/backgrounds/tablet.png');
+  }
+}
+
+/* Laptop (1024px and up) */
+@media (min-width: 1024px) {
+  .bg-responsive {
+    background-image: url('/backgrounds/laptop.png');
+  }
+}
+
+/* Desktop (1280px and up) */
+@media (min-width: 1280px) {
+  .bg-responsive {
+    background-image: url('/backgrounds/desktop.png');
+  }
+}
+
+/* 4K and Ultra-wide (1920px and up) */
+@media (min-width: 1920px) {
+  .bg-responsive {
+    background-image: url('/backgrounds/ultrawide.png');
+  }
+}
