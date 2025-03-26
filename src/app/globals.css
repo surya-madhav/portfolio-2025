@@ -3,60 +3,104 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --glass-bg: rgba(17, 25, 40, 0.75);
+  --glass-border: rgba(255, 255, 255, 0.125);
+  --glass-highlight: rgba(255, 255, 255, 0.1);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  height: 100%;
+  overflow-x: hidden;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100%;
+  overflow-x: hidden;
+  color: #fff;
 }
 
-/* Background Image System */
-.bg-responsive {
-  @apply relative min-h-screen;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+/* Glass Morphism */
+.glass-panel {
+  @apply backdrop-blur-md;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 
-/* Mobile First Approach */
-.bg-responsive {
-  background-image: url('/backgrounds/mobile.png');
+.glass-panel:hover {
+  background: rgba(17, 25, 40, 0.85);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
 }
 
-/* Tablet (640px and up) */
-@media (min-width: 640px) {
-  .bg-responsive {
-    background-image: url('/backgrounds/tablet.png');
+/* Video Background */
+.video-background {
+  @apply fixed top-0 left-0 w-full h-full -z-10;
+  perspective: 1px;
+  transform-style: preserve-3d;
+}
+
+.video-background video {
+  @apply w-full h-full object-cover;
+  transform-origin: left center;
+}
+
+/* Screen-specific video positioning */
+/* Mobile */
+@media (max-width: 640px) {
+  .video-background video {
+    object-position: 0% center;
+    transform: scale(1.5);
   }
 }
 
-/* Laptop (1024px and up) */
-@media (min-width: 1024px) {
-  .bg-responsive {
-    background-image: url('/backgrounds/laptop.png');
+/* Small tablets */
+@media (min-width: 641px) and (max-width: 768px) {
+  .video-background video {
+    object-position: 5% center;
+    transform: scale(1.4);
   }
 }
 
-/* Desktop (1280px and up) */
-@media (min-width: 1280px) {
-  .bg-responsive {
-    background-image: url('/backgrounds/desktop.png');
+/* Tablets */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .video-background video {
+    object-position: 10% center;
+    transform: scale(1.3);
   }
 }
 
-/* 4K and Ultra-wide (1920px and up) */
-@media (min-width: 1920px) {
-  .bg-responsive {
-    background-image: url('/backgrounds/ultrawide.png');
+/* Small laptops */
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .video-background video {
+    object-position: 15% center;
+    transform: scale(1.2);
   }
+}
+
+/* Parallax Styles */
+.parallax-wrapper {
+  height: 100vh;
+  overflow-x: hidden;
+  perspective: 10px;
+  transform-style: preserve-3d;
+}
+
+.parallax-content {
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.parallax-section {
+  position: relative;
+  min-height: 100vh;
+  transform-style: preserve-3d;
+  z-index: 2;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.content-wrapper {
+  position: relative;
+  transform: translateZ(0);
+  z-index: 2;
 }
