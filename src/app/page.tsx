@@ -1,7 +1,6 @@
 'use client';
 
 import NavBar from '@/components/NavBar';
-import PageSection from '@/components/PageSection';
 import AnimatedBadges from '@/components/AnimatedBadges';
 import VideoBackground from '@/components/VideoBackground';
 
@@ -18,7 +17,7 @@ export default function Home() {
               <div className="text-center pt-24 sm:pt-32 px-4">
                 <div className="glass-panel rounded-2xl p-6 sm:p-8 transition-all duration-300">
                   <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-300 hover:from-orange-300 hover:to-orange-400">
-                    Sai Surya Rebbapragada's Portfolio
+                    Sai Surya Rebbapragada&apos;s Portfolio
                   </h1>
                   <div className="mt-2 h-0.5 w-3/4 mx-auto bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
                   <AnimatedBadges />
